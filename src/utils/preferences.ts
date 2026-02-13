@@ -4,7 +4,6 @@ export interface Preferences {
   gitlab_private_token: string;
   gitlab_ssh_port: number;
   clone_base_path: string;
-  clean_repos: boolean;
   preferred_ide: "vscode" | "pycharm";
 }
 // Endregion: Preferences

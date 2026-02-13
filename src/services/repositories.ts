@@ -25,18 +25,6 @@ async function openInIDE(path: string, preferences: Preferences) {
   }
 }
 
-async function cleanRepository(path: string) {
-  const clean = `zsh -i -c 'cd ${path} && git_clean -a'`;
-  showToast({ style: Toast.Style.Animated, title: `Cleaning repository...` });
-
-  try {
-    await execPromise(clean);
-    showToast({ style: Toast.Style.Success, title: "Successfully cleaned repository." });
-  } catch (error) {
-    showToast({ title: `Failed to clean repository. ${error}` });
-  }
-}
-
 export function getLocalPath(url: string, preferences: Preferences) {
   return `${preferences.clone_base_path}/${url.replace(`ssh://git@${preferences.gitlab_api_base_url}:2240/`, "").replace(".git", "").toLowerCase()}`;
 }
@@ -53,8 +41,5 @@ export async function cloneRepository(url: string, preferences: Preferences) {
     showToast({ style: Toast.Style.Success, title: `Repository already cloned` });
   }
 
-  if (preferences.clean_repos) {
-    await cleanRepository(path);
-  }
   await openInIDE(path, preferences);
 }
