@@ -1,0 +1,100 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "gitlab",
+  "title": "GitLab",
+  "description": "Extension to do things with GitLab",
+  "icon": "extension-icon.png",
+  "author": "ruben_claessens",
+  "platforms": [
+    "macOS"
+  ],
+  "categories": [
+    "Developer Tools",
+    "Productivity"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "search-projects",
+      "title": "Search Projects",
+      "subtitle": "Search and clone projects from GitLab",
+      "description": "Search repositories and do something with them",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.104.6",
+    "@raycast/utils": "^1.17.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.0.4",
+    "@types/node": "22.13.10",
+    "@types/react": "19.0.10",
+    "eslint": "^9.22.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
+    "publish": "npx @raycast/api@latest publish"
+  },
+    "preferences": [
+    {
+      "name": "gitlab_api_base_url",
+      "title": "API base url",
+      "description": "The API base url for your GitLab instance (without the https:// and trailing '/').",
+      "placeholder": "example.com",
+      "type": "textfield",
+      "required": true
+    },
+    {
+      "name": "gitlab_private_token",
+      "title": "Gitlab private token",
+      "description": "The gitlab private token to access the API, needs at least 'read:api' access.",
+      "placeholder": "secret",
+      "type": "password",
+      "required": true
+    },
+    {
+      "name": "gitlab_ssh_port",
+      "title": "GitLab SSH Port",
+      "description": "The port GitLab ssh requests are being made (default: 22)",
+      "placeholder": "22",
+      "default": "22",
+      "type": "textfield",
+      "required": true
+    },
+    {
+      "name": "clone_base_path",
+      "title": "Clone base path",
+      "description": "The base path to clone the repository (default: ~/repos)",
+      "placeholder": "~/repos",
+      "default": "~/repos",
+      "type": "textfield",
+      "required": true
+    },
+    {
+      "name": "preferred_ide",
+      "title": "Preferred IDE",
+      "description": "The IDE to open repositories in",
+      "type": "dropdown",
+      "required": true,
+      "default": "vscode",
+      "data": [
+        {
+          "title": "Visual Studio Code",
+          "value": "vscode"
+        },
+        {
+          "title": "PyCharm",
+          "value": "pycharm"
+        }
+      ]
+    }
+  ]
+
+}
